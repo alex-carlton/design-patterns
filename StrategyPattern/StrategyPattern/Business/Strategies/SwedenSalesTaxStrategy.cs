@@ -1,4 +1,5 @@
 ﻿using StrategyPattern.Business.Models;
+using StrategyPattern.Business.Models.Enums;
 
 namespace StrategyPattern.Business.Strategies
 {
@@ -6,44 +7,28 @@ namespace StrategyPattern.Business.Strategies
     {
         public decimal GetTaxFor(Order order)
         {
-            var destination = order.ShippingDetails.DestinationCountry.ToLower();
-            var origin = order.ShippingDetails.OriginCountry.ToLower();
+            decimal totalTax = 0m;
 
-            if (destination == origin)
+            foreach (var item in order.LineItems)
             {
-                return order.TotalPrice * 0.25m;
+                switch (item.Key.ItemType)
+                {
+                    case ItemType.Food:
+                        totalTax += (item.Key.Price * 0.06m) * item.Value;
+                        break;
+
+                    case ItemType.Literature:
+                        totalTax += (item.Key.Price * 0.08m) * item.Value;
+                        break;
+
+                    case ItemType.Service:
+                    case ItemType.Hardware:
+                        totalTax += (item.Key.Price * 0.25m) * item.Value;
+                        break;
+                }
             }
 
-            #region Tax per item
-
-            //if (destination == ShippingDetails.OriginCountry.ToLowerInvariant())
-            //{
-            //    decimal totalTax = 0m;
-            //    foreach (var item in LineItems)
-            //    {
-            //        switch (item.Key.ItemType)
-            //        {
-            //            case ItemType.Food:
-            //                totalTax += (item.Key.Price * 0.06m) * item.Value;
-            //                break;
-
-            //            case ItemType.Literature:
-            //                totalTax += (item.Key.Price * 0.08m) * item.Value;
-            //                break;
-
-            //            case ItemType.Service:
-            //            case ItemType.Hardware:
-            //                totalTax += (item.Key.Price * 0.25m) * item.Value;
-            //                break;
-            //        }
-            //    }
-
-            //    return totalTax;
-            //}
-
-            #endregion Tax per item
-
-            return 0m;
+            return totalTax;
         }
     }
 }
