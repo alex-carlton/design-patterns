@@ -1,4 +1,5 @@
-﻿using StrategyPattern.Business.Strategies;
+﻿using StrategyPattern.Business.Models.Enums;
+using StrategyPattern.Business.Strategies;
 using System.Collections.Generic;
 using System.Linq;
 

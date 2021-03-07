@@ -1,4 +1,5 @@
 ﻿using StrategyPattern.Business.Models;
+using StrategyPattern.Business.Models.Enums;
 using StrategyPattern.Business.Strategies;
 using System;
 
