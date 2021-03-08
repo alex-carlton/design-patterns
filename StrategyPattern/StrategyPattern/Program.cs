@@ -35,9 +35,9 @@ namespace StrategyPattern
             if (string.Equals(destination, "usa", StringComparison.OrdinalIgnoreCase))
             {
                 Console.WriteLine("Chose one of the following destination states.");
-                Console.WriteLine("1. CA");
-                Console.WriteLine("2. IL");
-                Console.WriteLine("3. NY");
+                Console.WriteLine("1. California");
+                Console.WriteLine("2. Illinois");
+                Console.WriteLine("3. New York");
                 Console.WriteLine("Select shipping provider: ");
                 destinationState = GetState(Convert.ToInt32(Console.ReadLine().Trim()));
             }
