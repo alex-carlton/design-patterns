@@ -93,7 +93,6 @@ namespace StrategyPattern
         {
             switch (state)
             {
-                case 0: return "not-applicable";
                 case 1: return "ca";
                 case 2: return "il";
                 case 3: return "ny";
