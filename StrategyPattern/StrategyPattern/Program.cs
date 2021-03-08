@@ -32,7 +32,7 @@ namespace StrategyPattern
             var destination = Console.ReadLine().Trim();
             var destinationState = String.Empty;
 
-            if (string.Equals(origin, "usa", StringComparison.OrdinalIgnoreCase))
+            if (string.Equals(destination, "usa", StringComparison.OrdinalIgnoreCase))
             {
                 Console.WriteLine("Chose one of the following destination states.");
                 Console.WriteLine("1. CA");
@@ -93,7 +93,6 @@ namespace StrategyPattern
         {
             switch (state)
             {
-                case 0: return "not-applicable";
                 case 1: return "ca";
                 case 2: return "il";
                 case 3: return "ny";
