@@ -32,7 +32,7 @@ namespace StrategyPattern
             var destination = Console.ReadLine().Trim();
             var destinationState = String.Empty;
 
-            if (string.Equals(origin, "usa", StringComparison.OrdinalIgnoreCase))
+            if (string.Equals(destination, "usa", StringComparison.OrdinalIgnoreCase))
             {
                 Console.WriteLine("Chose one of the following destination states.");
                 Console.WriteLine("1. CA");
