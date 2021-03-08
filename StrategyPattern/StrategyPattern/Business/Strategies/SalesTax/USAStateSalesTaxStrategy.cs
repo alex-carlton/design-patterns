@@ -8,9 +8,9 @@ namespace StrategyPattern.Business.Strategies
         {
             switch (order.ShippingDetails.DestinationState.ToLower())
             {
-                case "la": return order.TotalPrice * 0.095m;
-                case "ny": return order.TotalPrice * 0.04m;
-                case "nyc": return order.TotalPrice * 0.045m;
+                case "ca": return order.TotalPrice * 0.095m;
+                case "il": return order.TotalPrice * 0.04m;
+                case "ny": return order.TotalPrice * 0.045m;
                 default: return 0m;
             }
         }

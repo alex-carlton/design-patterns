@@ -1,6 +1,7 @@
 ﻿using StrategyPattern.Business.Models.Enums;
 using StrategyPattern.Business.Strategies;
 using StrategyPattern.Business.Strategies.Invoice;
+using StrategyPattern.Business.Strategies.Shipping;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +27,7 @@ namespace StrategyPattern.Business.Models
         public ISalesTaxStrategy SalesTaxStrategy { get; set; }
 
         public IInvoiceStrategy InvoiceStrategy { get; set; }
+        public IShippingStrategy ShippingStrategy { get; set; }
 
         public decimal GetTax()
         {
@@ -39,7 +41,7 @@ namespace StrategyPattern.Business.Models
 
         public void FinalizeOrder()
         {
-            if(SelectedPayments
+            if (SelectedPayments
                 .Any(x => x.PaymentProvider == PaymentProvider.Invoice) && AmountDue > 0 && ShippingStatus == ShippingStatus.WaitingForPayment)
             {
                 InvoiceStrategy.Generate(this);
@@ -50,6 +52,8 @@ namespace StrategyPattern.Business.Models
             {
                 throw new Exception("Unable to finalize order");
             }
+
+            ShippingStrategy.Ship(this);
         }
     }
 
