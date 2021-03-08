@@ -10,7 +10,7 @@ namespace StrategyPattern.Business.Strategies.Shipping
         {
             using (var client = new HttpClient())
             {
-                //TODO: Implement DHL Shipping Integration
+                //TODO: Implement UPS Shipping Integration
 
                 Console.WriteLine("Order is shipped with UPS");
             }
